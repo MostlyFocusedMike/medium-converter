@@ -22,8 +22,8 @@ module.exports = new Confidence.Store({
             },
             production: {
                 request: ['implementation'],
-            }
-        }
+            },
+        },
     },
     register: {
         plugins: [
@@ -36,8 +36,8 @@ module.exports = new Confidence.Store({
                     $filter: { $env: 'NODE_ENV' },
                     $default: 'hpal-debug',
                     production: Toys.noop,
-                }
-            }
-        ]
-    }
+                },
+            },
+        ],
+    },
 });

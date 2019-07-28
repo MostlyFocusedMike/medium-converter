@@ -10,18 +10,23 @@
   },
   "scripts": {
     "start": "nodemon src/backend/server",
+    "in:main": "docker-compose exec main bash",
+    "in:db": "docker-compose exec db psql boiler_room root",
     "test": "lab -a @hapi/code -L",
     "lint": "eslint ."
   },
   "dependencies": {
     "@hapi/boom": "7.x.x",
-    "@hapi/joi": "15.x.x",
-    "haute-couture": "3.x.x",
     "@hapi/glue": "6.x.x",
     "@hapi/hapi": "18.x.x",
+    "@hapi/joi": "15.x.x",
     "@hapi/lab": "18.x.x",
     "confidence": "4.x.x",
     "dotenv": "8.x.x",
+    "haute-couture": "3.x.x",
+    "knex": "^0.19.1",
+    "objection": "^1.6.9",
+    "pg": "^7.12.0",
     "toys": "2.x.x"
   },
   "devDependencies": {

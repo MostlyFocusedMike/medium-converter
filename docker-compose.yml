@@ -21,3 +21,15 @@ services:
     # environment:
 
     container_name: main_container
+
+  db:
+    image: postgres:9.6-alpine
+    ports:
+      - '5431:5432'
+    environment:
+      # these are PG builtin env vars
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: boiler_room
+
+    container_name: db_container

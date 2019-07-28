@@ -15,8 +15,6 @@ COPY ./package*.json /usr/app/
 RUN npm install -g nodemon
 RUN npm ci
 
-EXPOSE 8000
-EXPOSE 3000
 
 # this command defaults to start our node server
 # however, our compose file over writes this so we get reloading
