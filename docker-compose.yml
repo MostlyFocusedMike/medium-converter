@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  # run docker-compose down if you change any of the PG environment variables
+  main:
+    build: ./ # location of Dockerfile
+    command: nodemon /usr/app/server
+    # depends_on:
+    #   - "db"
+    ports:
+      - "8000:8000"
+      - "3000:3000"
+
+    # these are the links from your local machine:docker files
+    # so that you can access them without restarting docker
+    volumes:
+      - ./src/:/usr/app/src/
+      - ./package.json:/usr/app/package.json
+
+    # environment variables needed for knex
+    # environment:
+
+    container_name: main_container
