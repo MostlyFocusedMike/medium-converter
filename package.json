@@ -9,9 +9,11 @@
     "test": "test"
   },
   "scripts": {
-    "start": "nodemon src/backend/server",
-    "in:main": "docker-compose exec main bash",
+    "start": "docker-compose up -d",
+    "in:core": "docker-compose exec core bash",
     "in:db": "docker-compose exec db psql boiler_room root",
+    "migrate": "docker-compose exec core npx knex migrate:latest",
+    "rollback": "docker-compose exec core npx knex migrate:rollback",
     "test": "lab -a @hapi/code -L",
     "lint": "eslint ."
   },

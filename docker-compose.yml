@@ -2,11 +2,11 @@ version: "3"
 
 services:
   # run docker-compose down if you change any of the PG environment variables
-  main:
+  core:
     build: ./ # location of Dockerfile
-    command: nodemon /usr/app/server
-    # depends_on:
-    #   - "db"
+    command: nodemon /usr/app/src/backend/server
+    depends_on:
+      - "db"
     ports:
       - "8000:8000"
       - "3000:3000"
@@ -18,9 +18,14 @@ services:
       - ./package.json:/usr/app/package.json
 
     # environment variables needed for knex
-    # environment:
+    environment:
+      DEV_DB_HOST: db
+      DEV_DB_PORT: 5432
+      DEV_DB_USER: root
+      DEV_DB_PSWD: root
+      DEV_DB_NAME: boiler_room
 
-    container_name: main_container
+    container_name: core_container
 
   db:
     image: postgres:9.6-alpine
