@@ -5,11 +5,12 @@ exports.seed = async (knex) => {
     await knex('tags').del();
     await knex('articles').del();
 
+    // multiple create (all objects, even relationships must be new)
     await Article.create([
         {
             title: 'I am the first article',
             content: 'Look I am the content on the first article',
-            tags: [ // notice that this is plural
+            tags: [
                 {
                     name: 'beginners',
                 },
@@ -22,26 +23,31 @@ exports.seed = async (knex) => {
                 {
                     name: 'advanced',
                 },
+                {
+                    name: 'fun',
+                },
             ],
         },
     ]);
 
-    const jsTag = await Tag.create(
-        {
-            name: 'js',
-        },
-    );
+    // single create
     const article3 = await Article.create({
         title: 'The third article is here',
         content: 'My content is nicest because it is thrice-est',
+        tags: [{
+            name: 'neat',
+        }],
     });
 
-    const art3 = await Article.findBy('title', 'The third article is here')
-    const art2 = await Article.findBy('title', 'It is I, the second article')
-    console.log('art3: ', art3);
-    await art3.$relatedQuery('tags').relate(jsTag.id);
+    // access created objects for after the fact relation building
+    const jsTag = await Tag.create({ name: 'js' });
+    await article3.addRelations('tags', jsTag);
+    const articles = await Article.all();
 
-    const tags = await art3.listTags();
-    const tags2 = await art2.listTags();
-    console.log('tags: ', tags);
+    // see what was made
+    for (let i = 0; i < articles.length; i++) {
+        console.log('article: ', articles[i]);
+        const tags = await articles[i].listRelations('tags'); // eslint-disable-line no-await-in-loop
+        console.log('tags: ', tags);
+    }
 };

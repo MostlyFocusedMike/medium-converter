@@ -9,6 +9,10 @@ class Article extends ObjectionBoiler {
         this.updated_at = new Date().toISOString();
     }
 
+    static async all() {
+        return this.query();
+    }
+
     static async find(id) {
         return this.query().findById(id);
     }
@@ -26,6 +30,7 @@ class Article extends ObjectionBoiler {
         return this.query().insertGraph(itemOrItemsToCreate);
     }
 
+    // returns all properties of obj, not just sent and the created id
     static async createAndFetch(itemOrItemsToCreate) {
         return this.query().insertGraphAndFetch(itemOrItemsToCreate);
     }
@@ -34,12 +39,12 @@ class Article extends ObjectionBoiler {
         return this.query().updateAndFetchById(note.id, { title: note.title, text: note.text });
     }
 
-    async addRelation(relationName, relationObj) {
-        this.$relatedQuery(relationName).relate(relationObj.id);
+    async addRelations(relationName, relationObjOrObjs) {
+        return this.$relatedQuery(relationName).relate(relationObjOrObjs.id);
     }
 
-    async listTags() {
-        return this.$relatedQuery('tags');
+    async listRelations(relationName) {
+        return this.$relatedQuery(relationName);
     }
 }
 
