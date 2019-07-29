@@ -16,8 +16,8 @@ class ObjectionBoiler extends Model {
                 id: { type: 'integer' },
                 title: { type: 'string' },
                 content: { type: 'string' },
-                created_at: { type: 'string' },
-                updated_at: { type: 'string' },
+                created_at: { type: 'date' },
+                updated_at: { type: 'date' },
             },
         };
     }

@@ -14,6 +14,7 @@
     "in:db": "docker-compose exec db psql boiler_room root",
     "migrate": "docker-compose exec core npx knex migrate:latest",
     "rollback": "docker-compose exec core npx knex migrate:rollback",
+    "seed": "docker-compose exec core npx knex seed:run",
     "test": "lab -a @hapi/code -L",
     "lint": "eslint ."
   },

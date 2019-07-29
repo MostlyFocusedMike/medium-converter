@@ -15,17 +15,17 @@ class ObjectionBoiler extends Model {
             properties: {
                 id: { type: 'integer' },
                 name: { type: 'string' },
-                created_at: { type: 'string' },
-                updated_at: { type: 'string' },
+                created_at: { type: 'date' },
+                updated_at: { type: 'date' },
             },
         };
     }
 
     static get relationMappings() {
         return {
-            tags: {
+            articles: {
                 relation: Model.ManyToManyRelation,
-                modelClass: Path.join(__dirname, '..', 'tag'),
+                modelClass: Path.join(__dirname, '..', 'article'),
                 join: {
                     from: 'tags.id',
                     through: {
