@@ -21,19 +21,6 @@ class ObjectionBoiler extends Model {
             },
         };
     }
-
-    static get relationMappings() {
-        return {
-            article: {
-                relation: Model.BelongsToOneRelation,
-                modelClass: Path.join(__dirname, '..', 'article'),
-                join: {
-                    from: 'comments.article_id',
-                    to: 'articles.id',
-                },
-            },
-        };
-    }
 }
 
 module.exports = ObjectionBoiler;

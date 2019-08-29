@@ -25,6 +25,14 @@ class Comment extends ObjectionBoiler {
     static async where(fieldName, value) {
         return this.query().where(fieldName, '=', value);
     }
+
+    async addRelations(relationName, relationObjOrObjs) {
+        return this.$relatedQuery(relationName).relate(relationObjOrObjs.id);
+    }
+
+    async listRelations(relationName) {
+        return this.$relatedQuery(relationName);
+    }
 }
 
 module.exports = Comment;

@@ -1,5 +1,6 @@
 const Article = require('../../models/article');
 const Tag = require('../../models/tag');
+const Comment = require('../../models/comment');
 
 exports.seed = async (knex) => {
     await knex('tags').del();
@@ -13,6 +14,11 @@ exports.seed = async (knex) => {
             tags: [
                 {
                     name: 'beginners',
+                },
+            ],
+            comments: [
+                {
+                    content: 'cool article',
                 },
             ],
         },
@@ -44,9 +50,11 @@ exports.seed = async (knex) => {
     await article3.addRelations('tags', jsTag);
     const articles = await Article.all();
 
+    const comment = await Comment.findBy('content', 'cool article');
+    comment.addRelations('article', article3);
     // see what was made
     for (let i = 0; i < articles.length; i++) {
-        console.log('article: ', articles[i]);
+        console.log('\narticle: ', articles[i]);
         const tags = await articles[i].listRelations('tags'); // eslint-disable-line no-await-in-loop
         console.log('tags: ', tags);
     }

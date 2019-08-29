@@ -36,6 +36,14 @@ class ObjectionBoiler extends Model {
                     to: 'tags.id',
                 },
             },
+            comments: {
+                relation: Model.HasManyRelation,
+                modelClass: Path.join(__dirname, '..', 'comment'),
+                join: {
+                    from: 'articles.id',
+                    to: 'comments.article_id',
+                },
+            },
         };
     }
 }
