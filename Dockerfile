@@ -1,5 +1,5 @@
 # this is where docker gets the image from
-FROM node:latest
+FROM node:10.16.3
 
 # code executes in the command line INSIDE the docker container
 RUN mkdir -p /usr/app

@@ -8,8 +8,8 @@ services:
     depends_on:
       - "db"
     ports:
-      - "8000:8000"
-      - "3000:3000"
+      # your port:docker internal port
+      - "8100:8000"
 
     # these are the links from your local machine:docker files
     # so that you can access them without restarting docker

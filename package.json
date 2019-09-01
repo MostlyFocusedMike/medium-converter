@@ -15,7 +15,6 @@
     "migrate": "docker-compose exec core npx knex migrate:latest",
     "rollback": "docker-compose exec core npx knex migrate:rollback",
     "seed": "docker-compose exec core npx knex seed:run",
-    "test": "lab -a @hapi/code -L",
     "lint": "eslint ."
   },
   "dependencies": {
