@@ -27,6 +27,7 @@
     "dotenv": "^8.1.0",
     "haute-couture": "3.x.x",
     "knex": "^0.19.3",
+    "node-fetch": "^2.6.0",
     "objection": "^1.6.9",
     "pg": "^7.12.1",
     "toys": "2.x.x"
