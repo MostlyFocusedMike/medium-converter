@@ -6,7 +6,7 @@ exports.seed = async (knex) => {
     await knex('articles').del();
 
     // multiple create (all objects, even relationships must be new)
-    await Article.create([
+    await Article.createWithTags([
         {
             "medium_id": "16f1a7e639a0",
             "title": "Attention New Devs: Professionals Google Stuff. A Lot.",
@@ -22,6 +22,24 @@ exports.seed = async (knex) => {
                 {
                     "name": "Coding Bootcamp",
                     "slug": "codingbootcamp"
+                }
+            ]
+        },
+        {
+            "medium_id": "b39840f75c4f",
+            "title": "How to Build a Dynamic, Controlled Form with React Hooks (2019)",
+            "slug": "how-to-build-a-dynamic-controlled-form-with-react-hooks-2019",
+            "link": "https://medium.com/@mikecronin92/how-to-build-a-dynamic-controlled-form-with-react-hooks-2019-b39840f75c4f",
+            "image": "https://miro.medium.com/max/1400/1*cElSU8pY7J_Ky6pg9bEe_w.jpeg",
+            "subtitle": "React Hooks help simplify a tricky concept",
+            "tags": [
+                {
+                    "name": "JavaScript", // this should not get created again
+                    "slug": "javascript"
+                },
+                {
+                    "name": "React",
+                    "slug": "react"
                 }
             ]
         },

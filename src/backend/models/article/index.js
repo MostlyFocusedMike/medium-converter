@@ -1,50 +1,20 @@
-const ObjectionBoiler = require('./objection-boiler');
+;const ObjectionBoiler = require('./objection-boiler');
+const Tag = require('../tag');
 
 class Article extends ObjectionBoiler {
-    static get useLimitInFirst() { // check docs
-        return true;
-    }
-
-    $beforeUpdate() {
-        this.updated_at = new Date().toISOString();
-    }
-
-    static async all() {
-        return this.query();
-    }
-
-    static async find(id) {
-        return this.query().findById(id);
-    }
-
-    static async findBy(fieldName, value) {
-        return this.query().where(fieldName, '=', value).first();
-    }
-
-    static async where(fieldName, value) {
-        return this.query().where(fieldName, '=', value);
-    }
-
-    // obj or array
-    static async create(itemOrItemsToCreate) {
-        return this.query().insertGraph(itemOrItemsToCreate);
-    }
-
-    // returns all properties of obj, not just sent and the created id
-    static async createAndFetch(itemOrItemsToCreate) {
-        return this.query().insertGraphAndFetch(itemOrItemsToCreate);
-    }
-
-    static async update(note) {
-        return this.query().updateAndFetchById(note.id, { title: note.title, text: note.text });
-    }
-
-    async addRelations(relationName, relationObjOrObjs) {
-        return this.$relatedQuery(relationName).relate(relationObjOrObjs.id);
-    }
-
-    async listRelations(relationName) {
-        return this.$relatedQuery(relationName);
+    static async createWithTags(articles) {
+        for (let i = 0; i < articles.length; i++) {
+            const { medium_id, title, slug, link, image, subtitle, tags } = articles[i];
+            const newArticle = await this.create({ medium_id, title, slug, link, image, subtitle })
+            for (let j = 0; j < tags.length; j++) {
+                console.log('tags[j]: ', tags[j]);
+                let dbTag = await Tag.findOne(tags[j]);
+                console.log('dbTag: ', dbTag);
+                if (!dbTag) dbTag = await Tag.create(tags[j]);
+                console.log('dbTa: ', dbTag);
+                newArticle.addRelations('tags', dbTag);
+            }
+        }
     }
 }
 

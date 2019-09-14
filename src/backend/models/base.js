@@ -12,12 +12,22 @@ class BaseModel extends Model {
         this.updated_at = new Date().toISOString();
     }
 
+    static async all() {
+        return this.query();
+    }
+
     static async find(id) {
         return this.query().findById(id);
     }
 
-    static async findBy(fieldName, value) {
-        return this.query().where(fieldName, '=', value).first();
+    // returns the first instance, for an array use where
+    static async findOne(item) {
+        return this.query().findOne(item);
+    }
+
+    // takes in object, not field name, and returns an array
+    static async where(item) {
+        return this.query().where(item);
     }
 
     // obj or array
@@ -25,8 +35,23 @@ class BaseModel extends Model {
         return this.query().insertGraph(itemOrItemsToCreate);
     }
 
-    static async where(fieldName, value) {
-        return this.query().where(fieldName, '=', value);
+    // returns all properties of obj, not just sent and the created id
+    static async createAndFetch(itemOrItemsToCreate) {
+        return this.query().insertGraphAndFetch(itemOrItemsToCreate);
+    }
+
+    static async findOrCreate(item) {
+        let dbItem = await this.query().where(item);
+        if (dbItem.length === 0) {
+            try {
+                dbItem = await this.query().insertAndFetch(item)
+            } catch(e) {
+                if (e.isUniqueConstraintError) { // this is not doing anything
+                dbItem = await this.query().where(item);
+                }
+            }
+        }
+        return dbItem
     }
 
     async addRelations(relationName, relationObjOrObjs) {
