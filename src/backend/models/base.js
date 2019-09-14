@@ -1,6 +1,9 @@
-const ObjectionBoiler = require('./objection-boiler');
+const { Model } = require('objection');
+const knex = require('./knex');
 
-class Comment extends ObjectionBoiler {
+Model.knex(knex); // Give the knex object to objection.
+
+class BaseModel extends Model {
     static get useLimitInFirst() { // check docs
         return true;
     }
@@ -35,4 +38,4 @@ class Comment extends ObjectionBoiler {
     }
 }
 
-module.exports = Comment;
+module.exports = BaseModel;

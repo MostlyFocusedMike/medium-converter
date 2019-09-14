@@ -1,10 +1,7 @@
 const Path = require('path');
-const { Model } = require('objection');
-const knex = require('../knex');
+const BaseModel = require('../base');
 
-Model.knex(knex); // Give the knex object to objection.
-
-class ObjectionBoiler extends Model {
+class ObjectionBoiler extends BaseModel {
     static get tableName() {
         return 'tags';
     }
@@ -24,7 +21,7 @@ class ObjectionBoiler extends Model {
     static get relationMappings() {
         return {
             articles: {
-                relation: Model.ManyToManyRelation,
+                relation: BaseModel.ManyToManyRelation,
                 modelClass: Path.join(__dirname, '..', 'article'),
                 join: {
                     from: 'tags.id',

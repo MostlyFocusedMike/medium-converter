@@ -30,7 +30,8 @@
     "node-fetch": "^2.6.0",
     "objection": "^1.6.9",
     "pg": "^7.12.1",
-    "toys": "2.x.x"
+    "toys": "2.x.x",
+    "typescript": "^3.6.2"
   },
   "devDependencies": {
     "@hapi/code": "5.x.x",

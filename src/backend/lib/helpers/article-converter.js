@@ -1,4 +1,9 @@
 class ArticlesConverter {
+    /**
+     * builds and returns the nicely formatted json for 10 articles and tags from medium
+     * @param {string} rawText - the invalid json rom medium that needs the top cut off
+     * @param {string} userHandle - the username, not including the @
+     */
     constructor(rawText, userHandle) {
         this.userHandle = userHandle;
         this.rawText = rawText;
@@ -17,10 +22,11 @@ class ArticlesConverter {
 
     formatArticle(rawArticle) {
         const {
-            id: mediumID,
+            id,
             title,
             slug,
             uniqueSlug,
+            firstPublishedAt,
             virtuals: { previewImage: { imageId }, tags },
             content: { subtitle, metaDescription },
         } = rawArticle;
@@ -28,7 +34,8 @@ class ArticlesConverter {
         const link = `https://medium.com/@${this.userHandle}/${uniqueSlug}`;
 
         return {
-            mediumID,
+            medium_id: id,
+            first_published_at: firstPublishedAt,
             title,
             slug,
             link,

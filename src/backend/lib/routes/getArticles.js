@@ -9,7 +9,6 @@ module.exports = {
             const result = await nodeFetch('https://medium.com/@mikecronin92/latest?format=json');
             const rawText = await result.text();
             const articles = new ArticleConverter(rawText, 'mikecronin92')
-            console.log('result: ', articles);
             return articles;
         },
     },
