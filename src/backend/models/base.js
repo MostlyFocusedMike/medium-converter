@@ -41,13 +41,13 @@ class BaseModel extends Model {
     }
 
     static async findOrCreate(item) {
-        let dbItem = await this.query().where(item);
-        if (dbItem.length === 0) {
+        let dbItem = await this.query().findOne(item);
+        if (!dbItem) {
             try {
-                dbItem = await this.query().insertAndFetch(item)
+                dbItem = await this.query().insertAndFetch(item);
             } catch(e) {
-                if (e.isUniqueConstraintError) { // this is not doing anything
-                dbItem = await this.query().where(item);
+                if (e.message.includes('duplicate key value violates unique constraint')) {
+                    dbItem = await this.query().where(item);
                 }
             }
         }

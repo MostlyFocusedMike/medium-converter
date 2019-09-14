@@ -50,8 +50,8 @@ exports.seed = async (knex) => {
 
     // see what was made
     for (let i = 0; i < articles.length; i++) {
-        console.log('\narticle: ', articles[i]);
+        console.log('\nArticle: ', articles[i]);
         const tags = await articles[i].listRelations('tags'); // eslint-disable-line no-await-in-loop
-        console.log('tags: ', tags);
+        console.log('\nTags: ', tags);
     }
 };
