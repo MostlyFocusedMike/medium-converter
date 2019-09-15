@@ -20,8 +20,9 @@ class Article extends ObjectionBoiler {
                 tags,
             } = articles[i];
             const newArticle = await this.createOrUpdate({ medium_id }, { title, slug, link, image, subtitle });
-            for (let j = 0; j < tags.length; j++) {
-                await this.addTag(tags[j], newArticle);
+            const filteredTags = Tag.filterTags(tags);
+            for (let j = 0; j < filteredTags.length; j++) {
+                await this.addTag(filteredTags[j], newArticle);
             }
         }
     }
