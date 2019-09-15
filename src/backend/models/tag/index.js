@@ -1,7 +1,6 @@
 const ObjectionBoiler = require('./objection-boiler');
 
 class Tag extends ObjectionBoiler {
-
     /**
      * Just filtering out overly generic tags that make sense for Medium but not for the site
      * @param {tags} tags - array of json tag object with name and slug

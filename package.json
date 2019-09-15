@@ -10,6 +10,8 @@
   },
   "scripts": {
     "start": "docker-compose up -d",
+    "build": "npx webpack",
+    "watch": "npx webpack --watch",
     "in:core": "docker-compose exec core bash",
     "in:db": "docker-compose exec db psql boiler_room root",
     "migrate": "docker-compose exec core npx knex migrate:latest",
@@ -23,6 +25,8 @@
     "@hapi/hapi": "^18.3.2",
     "@hapi/joi": "^15.1.1",
     "@hapi/lab": "18.x.x",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
     "confidence": "4.x.x",
     "dotenv": "^8.1.0",
     "haute-couture": "3.x.x",
@@ -31,8 +35,14 @@
     "objection": "^1.6.9",
     "objection-db-errors": "^1.1.1",
     "pg": "^7.12.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "source-map-loader": "^0.2.4",
     "toys": "2.x.x",
-    "typescript": "^3.6.2"
+    "ts-loader": "^6.1.0",
+    "typescript": "^3.6.3",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.8"
   },
   "devDependencies": {
     "@hapi/code": "5.x.x",
