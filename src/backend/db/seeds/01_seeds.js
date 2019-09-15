@@ -1,5 +1,4 @@
 const Article = require('../../models/article');
-const Tag = require('../../models/tag');
 
 exports.seed = async (knex) => {
     await knex('tags').del();
@@ -25,6 +24,25 @@ exports.seed = async (knex) => {
                 }
             ]
         },
+        {
+            "medium_id": "b39840f75c4f",
+            "title": "How to Build a Dynamic, Controlled Form with React Hooks (2019)",
+            "slug": "how-to-build-a-dynamic-controlled-form-with-react-hooks-2019",
+            "link": "https://medium.com/@mikecronin92/how-to-build-a-dynamic-controlled-form-with-react-hooks-2019-b39840f75c4f",
+            "image": "https://WRONGLINK",
+            "subtitle": "React Hooks help simplify a tricky concept",
+            "tags": [
+                {
+                    "name": "JavaScript", // this should not get created again
+                    "slug": "javascript"
+                },
+                {
+                    "name": "React",
+                    "slug": "react"
+                }
+            ]
+        },
+        // move this to a test
         {
             "medium_id": "b39840f75c4f",
             "title": "How to Build a Dynamic, Controlled Form with React Hooks (2019)",

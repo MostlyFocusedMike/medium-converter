@@ -54,6 +54,28 @@ class BaseModel extends Model {
         return dbItem
     }
 
+    /**
+     * given an idea, this will either update the attirbutes or create new entry
+     * @param {object} identifier - properties used to find an item, usually just an id or alternative key
+     * @param {object} attributes - all the properties used to update an item
+     */
+    static async createOrUpdate(identifier, attributes) {
+        let dbItem = await this.query().findOne(identifier);
+        if (!dbItem) {
+            try {
+                dbItem = await this.query().insertAndFetch({...identifier, ...attributes});
+            } catch(e) {
+                if (e.message.includes('duplicate key value violates unique constraint')) {
+                    dbItem = await this.query().updateAndFetchById(dbItem.id, attributes);
+                }
+            }
+        } else {
+            dbItem = await this.query().updateAndFetchById(dbItem.id, attributes);
+        }
+        return dbItem
+    }
+
+    // individula item classes
     async addRelations(relationName, relationObjOrObjs) {
         return this.$relatedQuery(relationName).relate(relationObjOrObjs.id);
     }
