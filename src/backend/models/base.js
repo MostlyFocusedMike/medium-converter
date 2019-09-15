@@ -45,13 +45,13 @@ class BaseModel extends Model {
         if (!dbItem) {
             try {
                 dbItem = await this.query().insertAndFetch(item);
-            } catch(e) {
+            } catch (e) {
                 if (e.message.includes('duplicate key value violates unique constraint')) {
                     dbItem = await this.query().where(item);
                 }
             }
         }
-        return dbItem
+        return dbItem;
     }
 
     /**
@@ -63,8 +63,8 @@ class BaseModel extends Model {
         let dbItem = await this.query().findOne(identifier);
         if (!dbItem) {
             try {
-                dbItem = await this.query().insertAndFetch({...identifier, ...attributes});
-            } catch(e) {
+                dbItem = await this.query().insertAndFetch({ ...identifier, ...attributes });
+            } catch (e) {
                 if (e.message.includes('duplicate key value violates unique constraint')) {
                     dbItem = await this.query().updateAndFetchById(dbItem.id, attributes);
                 }
@@ -72,7 +72,7 @@ class BaseModel extends Model {
         } else {
             dbItem = await this.query().updateAndFetchById(dbItem.id, attributes);
         }
-        return dbItem
+        return dbItem;
     }
 
     // individula item classes
