@@ -14,6 +14,7 @@ services:
     # these are the links from your local machine:docker files
     # so that you can access them without restarting docker
     volumes:
+      - ./public/:/usr/app/public/
       - ./src/:/usr/app/src/
       - ./package.json:/usr/app/package.json
       - ./tsconfig.json:/usr/app/tsconfig.json

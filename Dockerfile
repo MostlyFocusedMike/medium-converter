@@ -8,6 +8,7 @@ RUN mkdir -p /usr/app
 WORKDIR /usr/app
 
 # this copies everything you need into from local into your docker container to start
+COPY ./public /usr/app/public/
 COPY ./src /usr/app/src/
 COPY ./knexfile.js /usr/app/
 COPY ./package*.json /usr/app/
