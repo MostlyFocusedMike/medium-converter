@@ -16,6 +16,8 @@ services:
     volumes:
       - ./src/:/usr/app/src/
       - ./package.json:/usr/app/package.json
+      - ./tsconfig.json:/usr/app/tsconfig.json
+      - ./webpack.config.js:/usr/app/webpack.config.js
 
     # environment variables needed for knex
     environment:

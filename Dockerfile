@@ -11,10 +11,13 @@ WORKDIR /usr/app
 COPY ./src /usr/app/src/
 COPY ./knexfile.js /usr/app/
 COPY ./package*.json /usr/app/
+COPY ./tsconfig.json /usr/app/
+COPY ./webpack.config.js /usr/app/
 
 # set up your docker environment with nodemon
 RUN npm install -g nodemon
 RUN npm ci
+RUN npm run build
 
 
 # this command defaults to start our node server
