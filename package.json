@@ -10,8 +10,8 @@
   },
   "scripts": {
     "start": "docker-compose up -d",
-    "build": "npx webpack",
-    "watch": "npx webpack --watch",
+    "build": "docker-compose exec core npx webpack",
+    "watch": "docker-compose exec core npx webpack --watch",
     "in:core": "docker-compose exec core bash",
     "in:db": "docker-compose exec db psql boiler_room root",
     "migrate": "docker-compose exec core npx knex migrate:latest",
