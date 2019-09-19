@@ -19,6 +19,8 @@ services:
       - ./package.json:/usr/app/package.json
       - ./tsconfig.json:/usr/app/tsconfig.json
       - ./webpack.config.js:/usr/app/webpack.config.js
+      # not sure this ever changes after load, but what the heck
+      - ./postcss.config.js:/usr/app/postcss.config.js
 
     # environment variables needed for knex
     environment:
