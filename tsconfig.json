@@ -6,7 +6,8 @@
         "target": "es5",
         "jsx": "react",
         "lib": ["es6", "dom"],
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "strict": true
     },
     "include": [
         "src/**/*", "webpack.config.js"
