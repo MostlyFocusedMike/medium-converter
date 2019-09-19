@@ -22,13 +22,13 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.css$/,
+                use: ['style-loader', 'postcss-loader'],
+            },
+            {
                 test: /\.ts(x?)$/,
                 exclude: /node_modules/,
-                use: [
-                    {
-                        loader: 'ts-loader',
-                    },
-                ],
+                use: ['ts-loader', 'astroturf/loader'],
             },
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             {

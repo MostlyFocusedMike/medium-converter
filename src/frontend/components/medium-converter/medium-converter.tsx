@@ -1,4 +1,5 @@
-import * as React from "react"
+import * as React from 'react';
+import './medium-converter.css';
 import { useEffect, useState } from "react";
 
 // export interface MediumConverterProps { compiler: string; framework: string; }
