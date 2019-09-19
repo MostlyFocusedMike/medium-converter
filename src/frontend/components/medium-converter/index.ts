@@ -1,1 +1,1 @@
-export * from './medium-converter-view';
+export * from './medium-converter';
