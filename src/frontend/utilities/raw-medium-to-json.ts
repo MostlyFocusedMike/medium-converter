@@ -23,7 +23,7 @@ export interface rawArticleIntf {
     };
 }
 
-export class ArticlesConverter {
+export class RawMediumToJSON {
     rawText: string;
     userHandle: string;
     constructor(rawText: string, userHandle: string) {
