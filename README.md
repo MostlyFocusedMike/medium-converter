@@ -23,3 +23,17 @@ heres is a [stackOverflow that explains it](https://stackoverflow.com/questions/
 postcss lets you put css in js files, and astroturf is the recommended webpack loader.
 [for install](https://github.com/postcss/postcss#css-in-js)
 You also need to update vscode to handle it with an extension, i'm currently using postcss-sugarss-language
+
+## getting annoying json import error to go away
+by adding
+
+```js
+    "resolveJsonModule": true,
+```
+
+you can now import json just like you would normally with js, HOWEVER Vscode won't stop
+highlighting the error in a test file since those are skipped from the build. so you had to
+use // @ts-ignore above the json test import to get it to stop, see the stackoverflow for the [oroginal proof](https://stackoverflow.com/questions/52296956/vscode-typescript-importing-json-file-highlighting-issue)
+
+
+
