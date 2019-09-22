@@ -55,6 +55,7 @@
     "@hapi/code": "5.x.x",
     "@hapi/eslint-config-hapi": "^12.2.0",
     "@hapi/eslint-plugin-hapi": "^4.3.4",
+    "@types/jest": "^24.0.18",
     "eslint": "^6.4.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
@@ -62,6 +63,8 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
     "hpal": "^2.2.1",
-    "hpal-debug": "1.x.x"
+    "hpal-debug": "1.x.x",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0"
   }
 }
