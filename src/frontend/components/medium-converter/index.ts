@@ -1,1 +1,3 @@
-export * from './medium-converter';
+import MediumConverter from './medium-converter';
+
+export default MediumConverter;

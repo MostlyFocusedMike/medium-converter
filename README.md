@@ -68,3 +68,7 @@ export default React
 export useState
 ```
 That's the pattern you can use to get both default and regular exports
+
+## Setting up enzyme
+You used [this ts enzyme react article](https://medium.com/@mateuszsokola/configuring-react-16-jest-enzyme-typescript-7122e1a1e6e8)
+and this explains the [style mocks](https://jestjs.io/docs/en/webpack)

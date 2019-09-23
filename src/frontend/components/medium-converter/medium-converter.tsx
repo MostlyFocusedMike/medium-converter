@@ -3,7 +3,7 @@ import './medium-converter.css';
 import Constants from '../../../constants'
 
 // export const MediumConverterContainer: React.FC<PropsItf> = (props) => {
-export const MediumConverter: React.FC = () => {
+const MediumConverter: React.FC = () => {
     const [rawText, setRawText] = useState('');
 
     useEffect(() => { console.log('rawText: ', rawText); }, [rawText]);
@@ -39,3 +39,5 @@ export const MediumConverter: React.FC = () => {
         </div>
     )
 }
+
+export default MediumConverter;

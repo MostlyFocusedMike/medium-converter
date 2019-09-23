@@ -4,12 +4,9 @@
   "description": "",
   "author": "",
   "license": "ISC",
-  "directories": {
-    "lib": "lib",
-    "test": "test"
-  },
   "scripts": {
     "start": "docker-compose up -d",
+    "test:f": "npx jest",
     "build": "docker-compose exec core npx webpack",
     "watch": "docker-compose exec core npx webpack --watch",
     "in:core": "docker-compose exec core bash",
