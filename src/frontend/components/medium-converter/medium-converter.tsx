@@ -1,8 +1,6 @@
-import * as React from 'react';
+import React, { useEffect, useState } from "react";
 import './medium-converter.css';
-import { useEffect, useState } from "react";
-
-// export interface MediumConverterProps { compiler: string; framework: string; }
+import Constants from '../../../constants'
 
 // export const MediumConverterContainer: React.FC<PropsItf> = (props) => {
 export const MediumConverter: React.FC = () => {
@@ -21,7 +19,12 @@ export const MediumConverter: React.FC = () => {
     return (
         <div id="medium-converter">
             <h1>Raw Medium Text Converter</h1>
-            <a href='https://medium.com/@mikecronin92/latest?format=json' target="_source">Go here and click cmd + a to select everything</a>
+            <a
+                href={`https://medium.com/@${Constants.USERNAME}/latest?format=json`}
+                target="_source"
+            >
+                Go here and click cmd + a to select everything
+            </a>
             <form onSubmit={handleSubmit} >
                 <label htmlFor="raw-medium-text-input">Medium Text</label>
                 <textarea
