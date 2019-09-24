@@ -1,27 +1,28 @@
 import React from 'react'
-import {render, fireEvent} from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import MediumConverter from './medium-converter';
 
 describe('MediumConverter tests', () => {
     const setup = () => {
-        const utils = render(<MediumConverter />)
+        const utils = render(<MediumConverter />);
         const textarea = utils.getByLabelText('paste your Medium', { exact: false });
         return {
             textarea,
             ...utils,
-        }
+        };
     }
 
     it('should render', () => {
-        const { queryByText } = setup()
+        const { queryByText } = setup();
         expect(queryByText('Raw Medium Text Converter')).toBeTruthy();
     })
 
     it('should take text', () => {
-        const { textarea } = setup()
-        fireEvent.change(textarea, { target: { value: 'dummy data' } })
+        const { textarea } = setup();
+        fireEvent.change(textarea, { target: { value: 'dummy data' } });
         // textarea has textContent, inputs have input.value
-        expect(textarea.textContent).toBe('dummy data')
+        expect(textarea.textContent).toBe('dummy data');
+        // todo: where does the fire event come from? jest?
     });
 
 
