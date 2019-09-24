@@ -3,12 +3,26 @@ import {render, fireEvent} from '@testing-library/react';
 import MediumConverter from './medium-converter';
 
 describe('MediumConverter tests', () => {
-    it('should render', () => {
-        const {debug, queryByText, getByLabelText, getByText} = render(<MediumConverter />)
+    const setup = () => {
+        const utils = render(<MediumConverter />)
+        const textarea = utils.getByLabelText('paste your Medium', { exact: false });
+        return {
+            textarea,
+            ...utils,
+        }
+    }
 
-        debug();
+    it('should render', () => {
+        const { queryByText } = setup()
         expect(queryByText('Raw Medium Text Converter')).toBeTruthy();
     })
+
+    it('should take text', () => {
+        const { textarea } = setup()
+        fireEvent.change(textarea, { target: { value: 'dummy data' } })
+        // textarea has textContent, inputs have input.value
+        expect(textarea.textContent).toBe('dummy data')
+    });
 
 
     // query* functions will return the element or null if it cannot be found

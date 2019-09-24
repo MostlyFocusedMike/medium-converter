@@ -26,7 +26,7 @@ const MediumConverter: React.FC = () => {
                 Go here and click cmd + a to select everything
             </a>
             <form onSubmit={handleSubmit} >
-                <label htmlFor="raw-medium-text-input">Medium Text</label>
+                <label htmlFor="raw-medium-text-input">Paste your Medium text into here:</label>
                 <textarea
                     id="raw-medium-text-input"
                     value={rawText}
