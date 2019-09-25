@@ -1,11 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import MediumConverter from "./components/medium-converter";
+import App from "./App";
 
-ReactDOM.render(
-    <div>
-        <MediumConverter />
-    </div>,
-    document.getElementById("main")
-);
+ReactDOM.render(<App />, document.getElementById("main"));

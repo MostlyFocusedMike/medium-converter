@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react';
-import MediumConverter from './medium-converter';
+import MediumConverter from './MediumConverter';
 
 describe('MediumConverter tests', () => {
     const setup = () => {
@@ -22,7 +22,6 @@ describe('MediumConverter tests', () => {
         fireEvent.change(textarea, { target: { value: 'dummy data' } });
         // textarea has textContent, inputs have input.value
         expect(textarea.textContent).toBe('dummy data');
-        // todo: where does the fire event come from? jest?
     });
 
 

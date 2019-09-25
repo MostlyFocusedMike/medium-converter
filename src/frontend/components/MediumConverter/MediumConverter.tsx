@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './medium-converter.css';
+import './MediumConverter.css';
 import Constants from '../../../constants'
 
 // export const MediumConverterContainer: React.FC<PropsItf> = (props) => {
