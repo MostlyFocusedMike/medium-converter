@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react';
-import MediumConverter from './MediumConverter';
+import MediumConverter from '.';
 
 describe('MediumConverter tests', () => {
     const setup = () => {
