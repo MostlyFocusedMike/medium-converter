@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import './index.css';
 import Constants from '../../../constants'
+import RawMediumToJSON, { niceJSONArticlesIntf } from '../../utilities/raw-medium-to-json';
 
 // export const MediumConverterContainer: React.FC<PropsItf> = (props) => {
 const MediumConverter: React.FC = () => {
     const [rawText, setRawText] = useState('');
+    const [articles, setArticles] = useState<niceJSONArticlesIntf[]>([]);
 
-    useEffect(() => { console.log('rawText: ', rawText); }, [rawText]);
+    // useEffect(() => { console.log('rawText: ', rawText); }, [rawText]);
+    useEffect(() => { console.log('articles: ', articles); }, [articles]);
 
     const handleChange = (e: React.FormEvent<HTMLTextAreaElement>): void => {
         setRawText(e.currentTarget.value);
@@ -14,6 +17,7 @@ const MediumConverter: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
+        setArticles(new RawMediumToJSON(rawText, Constants.USERNAME).niceJSONArticles);
     };
 
     return (

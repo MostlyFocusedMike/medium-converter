@@ -1,4 +1,4 @@
-export interface rawTagIntf {
+interface rawTagIntf {
     name: string,
     slug: string,
     postCount: number,
@@ -6,7 +6,7 @@ export interface rawTagIntf {
     type: string,
 }
 
-export interface rawArticleIntf {
+interface rawArticleIntf {
     id: string;
     title: string;
     slug: string;
@@ -23,7 +23,21 @@ export interface rawArticleIntf {
     };
 }
 
-export class RawMediumToJSON {
+export interface niceJSONArticlesIntf {
+    mediumID: string;
+    title: string;
+    slug: string;
+    link: string;
+    image: string;
+    subtitle: string;
+    metaDescription: string;
+    tags: {
+        name: string;
+        slug: string;
+    }[];
+}[]
+
+class RawMediumToJSON {
     rawText: string;
     userHandle: string;
     constructor(rawText: string, userHandle: string) {
@@ -71,3 +85,5 @@ export class RawMediumToJSON {
         return Object.keys(this.roughJSONArticles).map(article => this.formatArticle(this.roughJSONArticles[article]));
     }
 }
+
+export default RawMediumToJSON;

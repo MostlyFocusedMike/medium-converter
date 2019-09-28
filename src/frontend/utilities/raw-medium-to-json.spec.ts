@@ -1,4 +1,4 @@
-import { RawMediumToJSON } from './raw-medium-to-json';
+import RawMediumToJSON from './raw-medium-to-json';
 import { mediumTextDump } from '../../mocks/utilities-test-mocks/mock-medium-text-dump';
 // @ts-ignore
 import mockOutput from '../../mocks/utilities-test-mocks/mock-output.json';

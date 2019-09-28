@@ -1,13 +1,19 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, cleanup, getByText } from '@testing-library/react';
 import MediumConverter from '.';
+import { mediumTextDump } from '../../../mocks/utilities-test-mocks/mock-medium-text-dump';
+
+afterEach(cleanup)
 
 describe('MediumConverter tests', () => {
     const setup = () => {
         const utils = render(<MediumConverter />);
         const textarea = utils.getByLabelText('paste your Medium', { exact: false });
+        const convertButton = utils.getByText('Convert');
+
         return {
             textarea,
+            convertButton,
             ...utils,
         };
     }
@@ -20,10 +26,17 @@ describe('MediumConverter tests', () => {
     it('should take text', () => {
         const { textarea } = setup();
         fireEvent.change(textarea, { target: { value: 'dummy data' } });
-        // textarea has textContent, inputs have input.value
+        // remember: textarea has textContent, inputs have input.value
         expect(textarea.textContent).toBe('dummy data');
     });
 
+    it('should submit and convert articles', () => {
+        const { textarea, convertButton } = setup();
+        fireEvent.change(textarea, { target: { value: mediumTextDump } });
+        // remember: textarea has textContent, inputs have input.value
+        expect(textarea.textContent).toBe(mediumTextDump);
+        fireEvent.click(convertButton);
+    });
 
     // query* functions will return the element or null if it cannot be found
     // get* functions will return the element or throw an error if it cannot be found
