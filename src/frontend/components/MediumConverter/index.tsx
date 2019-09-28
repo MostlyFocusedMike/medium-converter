@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import './index.css';
+import './styles.css';
 import Constants from '../../../constants'
 import RawMediumToJSON, { niceJSONArticlesIntf } from '../../utilities/raw-medium-to-json';
+import ArticlesHolder from "./SubComponents/ArticlesHolder";
 
 // export const MediumConverterContainer: React.FC<PropsItf> = (props) => {
 const MediumConverter: React.FC = () => {
@@ -9,7 +10,7 @@ const MediumConverter: React.FC = () => {
     const [articles, setArticles] = useState<niceJSONArticlesIntf[]>([]);
 
     // useEffect(() => { console.log('rawText: ', rawText); }, [rawText]);
-    useEffect(() => { console.log('articles: ', articles); }, [articles]);
+    // useEffect(() => { console.log('articles: ', articles); }, [articles]);
 
     const handleChange = (e: React.FormEvent<HTMLTextAreaElement>): void => {
         setRawText(e.currentTarget.value);
@@ -39,6 +40,7 @@ const MediumConverter: React.FC = () => {
                 <input
                     type='submit' value='Convert'
                 />
+                <ArticlesHolder articles={articles}/>
             </form>
         </div>
     )
