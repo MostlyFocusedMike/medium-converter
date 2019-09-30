@@ -1,0 +1,6 @@
+.json-articles-card {
+    margin: 1rem;
+    border: 0.1rem solid #000;
+    height: 15rem;
+    overflow: auto;
+}

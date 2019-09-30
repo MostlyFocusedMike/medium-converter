@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import './styles.css';
 import Constants from '../../../constants'
 import RawMediumToJSON, { niceJSONArticlesIntf } from '../../utilities/raw-medium-to-json';
-import ArticlesHolder from "./SubComponents/ArticlesHolder";
+import ArticlesHolder from './SubComponents/ArticlesHolder';
+import JsonArticlesCard from './SubComponents/JsonArticlesCard';
+import { ArticleAdapter } from '../../adapters';
 
 // export const MediumConverterContainer: React.FC<PropsItf> = (props) => {
 const MediumConverter: React.FC = () => {
@@ -19,29 +21,33 @@ const MediumConverter: React.FC = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         setArticles(new RawMediumToJSON(rawText, Constants.USERNAME).niceJSONArticles);
+        ArticleAdapter.getAll()
+            .then(console.log)
     };
 
     return (
-        <div id="medium-converter">
+        <div id='medium-converter'>
             <h1>Raw Medium Text Converter</h1>
             <a
                 href={`https://medium.com/@${Constants.USERNAME}/latest?format=json`}
-                target="_source"
+                target='_source'
             >
                 Go here and click cmd + a to select everything
             </a>
             <form onSubmit={handleSubmit} >
-                <label htmlFor="raw-medium-text-input">Paste your Medium text into here:</label>
+                <label htmlFor='raw-medium-text-input'>Paste your Medium text into here:</label>
                 <textarea
-                    id="raw-medium-text-input"
+                    id='raw-medium-text-input'
                     value={rawText}
                     onChange={handleChange}
                 />
                 <input
                     type='submit' value='Convert'
                 />
-                <ArticlesHolder articles={articles}/>
             </form>
+            {/* this will eventually be the real DB json, not the medium version */}
+            <JsonArticlesCard jsonArticles={articles} />
+            <ArticlesHolder articles={articles}/>
         </div>
     )
 }
