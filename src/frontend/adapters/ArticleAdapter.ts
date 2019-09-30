@@ -1,3 +1,5 @@
+import { niceJSONArticlesIntf } from '../utilities/raw-medium-to-json';
+
 class ArticleAdapter {
     static url = '/articles';
     static options: RequestInit = { // RequestInit is fetch's options interface
@@ -10,6 +12,15 @@ class ArticleAdapter {
 
     static getAll() {
         return fetch(this.url, this.options).then(response => response.json());
+    }
+
+    static createAll(niceJSONArticles: niceJSONArticlesIntf[]) {
+        const postOptions = {
+            ...this.options,
+            method: 'POST',
+            body: JSON.stringify(niceJSONArticles)
+        };
+        return fetch('/create-from-medium', postOptions).then(response => response.json());
     }
 }
 

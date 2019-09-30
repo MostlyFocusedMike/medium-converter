@@ -9,9 +9,10 @@ class Article extends ObjectionBoiler {
      * @param {articles} articles - the formatted json of articles and nested tags
      */
     static async createWithTags(articles) {
+        console.log('articles: ', articles);
         for (let i = 0; i < articles.length; i++) {
             const {
-                medium_id, // eslint-disable-line camelcase
+                mediumID: medium_id, // eslint-disable-line camelcase
                 title,
                 slug,
                 link,
@@ -19,12 +20,14 @@ class Article extends ObjectionBoiler {
                 subtitle,
                 tags,
             } = articles[i];
+            console.log('articles[i]: ', articles[i]);
             const newArticle = await this.createOrUpdate({ medium_id }, { title, slug, link, image, subtitle });
             const filteredTags = Tag.filterTags(tags);
             for (let j = 0; j < filteredTags.length; j++) {
                 await this.addTag(filteredTags[j], newArticle);
             }
         }
+        return this.all();
     }
 
     /**

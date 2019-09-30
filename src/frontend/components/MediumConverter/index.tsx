@@ -20,8 +20,9 @@ const MediumConverter: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        setArticles(new RawMediumToJSON(rawText, Constants.USERNAME).niceJSONArticles);
-        ArticleAdapter.getAll()
+        const madeArticles = new RawMediumToJSON(rawText, Constants.USERNAME).niceJSONArticles;
+        console.log('made: ', madeArticles);
+        ArticleAdapter.createAll(madeArticles)
             .then(console.log)
     };
 
