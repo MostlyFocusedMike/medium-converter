@@ -12,7 +12,7 @@ class Article extends ObjectionBoiler {
         console.log('articles: ', articles);
         for (let i = 0; i < articles.length; i++) {
             const {
-                mediumID: medium_id, // eslint-disable-line camelcase
+                medium_id, // eslint-disable-line camelcase
                 title,
                 slug,
                 link,

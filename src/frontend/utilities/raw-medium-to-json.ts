@@ -24,7 +24,7 @@ interface rawArticleIntf {
 }
 
 export interface niceJSONArticlesIntf {
-    mediumID: string;
+    medium_id: string;
     title: string;
     slug: string;
     link: string;
@@ -55,7 +55,7 @@ class RawMediumToJSON {
 
     formatArticle = (rawArticle: rawArticleIntf) => {
         const {
-            id: mediumID,
+            id: medium_id,
             title,
             slug,
             uniqueSlug,
@@ -66,7 +66,7 @@ class RawMediumToJSON {
         const link = `https://medium.com/@${this.userHandle}/${uniqueSlug}`;
 
         return {
-            mediumID,
+            medium_id,
             title,
             slug,
             link,

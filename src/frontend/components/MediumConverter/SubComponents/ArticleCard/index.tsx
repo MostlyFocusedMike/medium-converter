@@ -7,7 +7,7 @@ interface cardsHolderIntf {
 
 export const ArticleCard: React.FC<cardsHolderIntf> = ({article}) => {
     const {
-        mediumID,
+        medium_id,
         title,
         slug,
         link,

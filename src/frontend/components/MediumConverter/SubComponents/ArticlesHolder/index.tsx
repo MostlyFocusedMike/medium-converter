@@ -14,7 +14,7 @@ export const ArticlesHolder: React.FC<cardsHolderIntf> = ({articles}) => {
                     ? articles.map((article, idx) => {
                         return (
                             <div
-                                key={`${article.mediumID}`}
+                                key={`${article.medium_id}`}
                             >
                                 <ArticleCard article={article}/>
                             </div>

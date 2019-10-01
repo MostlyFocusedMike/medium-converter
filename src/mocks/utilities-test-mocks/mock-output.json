@@ -1,6 +1,6 @@
 [
     {
-      "mediumID": "43dc4063d1cb",
+      "medium_id": "43dc4063d1cb",
       "title": "A TypeScript Startup Guide for the Impatient",
       "slug": "a-typescript-startup-guide-for-the-impatient",
       "link": "https://medium.com/@mikecronin92/a-typescript-startup-guide-for-the-impatient-43dc4063d1cb",
@@ -30,7 +30,7 @@
       ]
     },
     {
-      "mediumID": "5edf4415a09d",
+      "medium_id": "5edf4415a09d",
       "title": "How to use a Ternary in JavaScript",
       "slug": "whats-a-javascript-ternary",
       "link": "https://medium.com/@mikecronin92/whats-a-javascript-ternary-5edf4415a09d",
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "mediumID": "16f1a7e639a0",
+      "medium_id": "16f1a7e639a0",
       "title": "Attention New Devs: Professionals Google Stuff. A Lot.",
       "slug": "attention-new-devs-professionals-google-stuff-a-lot",
       "link": "https://medium.com/@mikecronin92/attention-new-devs-professionals-google-stuff-a-lot-16f1a7e639a0",
@@ -90,7 +90,7 @@
       ]
     },
     {
-      "mediumID": "c8e5275155b5",
+      "medium_id": "c8e5275155b5",
       "title": "A Ruby Cheatsheet For Arrays",
       "slug": "a-ruby-cheatsheet-for-arrays",
       "link": "https://medium.com/@mikecronin92/a-ruby-cheatsheet-for-arrays-c8e5275155b5",
@@ -120,7 +120,7 @@
       ]
     },
     {
-      "mediumID": "b39840f75c4f",
+      "medium_id": "b39840f75c4f",
       "title": "How to Build a Dynamic, Controlled Form with React Hooks (2019)",
       "slug": "how-to-build-a-dynamic-controlled-form-with-react-hooks-2019",
       "link": "https://medium.com/@mikecronin92/how-to-build-a-dynamic-controlled-form-with-react-hooks-2019-b39840f75c4f",
@@ -150,7 +150,7 @@
       ]
     },
     {
-      "mediumID": "62eef165bec8",
+      "medium_id": "62eef165bec8",
       "title": "What are Primitive and Reference Types in JavaScript?",
       "slug": "javascript-interview-prep-primitive-vs-reference-types",
       "link": "https://medium.com/@mikecronin92/javascript-interview-prep-primitive-vs-reference-types-62eef165bec8",
@@ -181,7 +181,7 @@
       ]
     },
     {
-      "mediumID": "a38b3033280c",
+      "medium_id": "a38b3033280c",
       "title": "Test Driven Development Is Dumb. Fight Me.",
       "slug": "test-driven-development-is-dumb-fight-me",
       "link": "https://medium.com/@mikecronin92/test-driven-development-is-dumb-fight-me-a38b3033280c",
@@ -211,7 +211,7 @@
       ]
     },
     {
-      "mediumID": "a072ba653717",
+      "medium_id": "a072ba653717",
       "title": "A Beginner’s Guide to Recursion",
       "slug": "understanding-how-recursion-works-by-using-arrays",
       "link": "https://medium.com/@mikecronin92/understanding-how-recursion-works-by-using-arrays-a072ba653717",
@@ -242,7 +242,7 @@
       ]
     },
     {
-      "mediumID": "9727c527efd0",
+      "medium_id": "9727c527efd0",
       "title": "How to use DataLoaders in GraphQL",
       "slug": "how-to-use-dataloader-js",
       "link": "https://medium.com/@mikecronin92/how-to-use-dataloader-js-9727c527efd0",
@@ -273,7 +273,7 @@
       ]
     },
     {
-      "mediumID": "dd4921cb3c1a",
+      "medium_id": "dd4921cb3c1a",
       "title": "What is the N+1 Problem in GraphQL?",
       "slug": "what-is-the-n-1-problem-in-graphql",
       "link": "https://medium.com/@mikecronin92/what-is-the-n-1-problem-in-graphql-dd4921cb3c1a",
