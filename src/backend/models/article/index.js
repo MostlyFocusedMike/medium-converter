@@ -27,7 +27,6 @@ class Article extends ObjectionBoiler {
                 await this.addTag(filteredTags[j], newArticle);
             }
         }
-        return this.all();
     }
 
     /**
