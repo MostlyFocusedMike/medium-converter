@@ -10,12 +10,12 @@ import { ArticleAdapter } from '../../adapters';
 const MediumConverter: React.FC = () => {
     const [rawText, setRawText] = useState('');
     const [articles, setArticles] = useState<niceJSONArticlesIntf[]>([]);
+    const [fullJson, setFullJson] = useState<any>([]); // figure out interface
 
     // useEffect(() => { console.log('rawText: ', rawText); }, [rawText]);
     // useEffect(() => { console.log('articles: ', articles); }, [articles]);
     useEffect(() => {
-        ArticleAdapter.getAllWithTags()
-            .then(console.log);
+        ArticleAdapter.getAllWithTags().then(setFullJson);
      }, []);
 
     const handleChange = (e: React.FormEvent<HTMLTextAreaElement>): void => {
@@ -51,7 +51,7 @@ const MediumConverter: React.FC = () => {
                 />
             </form>
             {/* this will eventually be the real DB json, not the medium version */}
-            <JsonArticlesCard jsonArticles={articles} />
+            <JsonArticlesCard jsonArticles={fullJson} />
             <ArticlesHolder articles={articles}/>
         </div>
     )
