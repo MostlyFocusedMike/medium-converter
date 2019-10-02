@@ -47,11 +47,14 @@ class Article extends ObjectionBoiler {
      */
     static async getArticlesWithTags() {
         const articles = await this.all();
-        for (let i = 0; i < articles.length; i++) {
-            const article = articles[i];
-            const relatedTags = await article.listRelations('tags');
-            article.tags = relatedTags;
-        }
+
+        await Promise.all(articles.map(article => article.listRelations('tags')))
+            .then(tags => {
+                articles.forEach((article, idx) => {
+                    article.tags = tags[idx]; // eslint-disable-line no-param-reassign
+                });
+            });
+
         return articles;
     }
 }
