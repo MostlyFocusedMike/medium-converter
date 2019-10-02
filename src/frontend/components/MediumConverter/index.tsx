@@ -18,6 +18,10 @@ const MediumConverter: React.FC = () => {
         ArticleAdapter.getAllWithTags().then(setFullJson);
      }, []);
 
+    useEffect(() => {
+        console.log(fullJson);
+    }, [fullJson]);
+
     const handleChange = (e: React.FormEvent<HTMLTextAreaElement>): void => {
         setRawText(e.currentTarget.value);
     };
@@ -26,8 +30,10 @@ const MediumConverter: React.FC = () => {
         e.preventDefault();
         const madeArticles = new RawMediumToJSON(rawText, Constants.USERNAME).niceJSONArticles;
         console.log('made: ', madeArticles);
-        ArticleAdapter.createAll(madeArticles)
-            .then(console.log)
+        ArticleAdapter.createAll(madeArticles).then((res => {
+            console.log('ees: ', res)
+            setFullJson(res);
+        }));
     };
 
     return (
