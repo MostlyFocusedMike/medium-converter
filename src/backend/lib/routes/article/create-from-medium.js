@@ -5,7 +5,8 @@ module.exports = {
         // TODO add joi
         handler: async (request, h) => {
             const { Article } = request.server.app.Database;
-            return Article.createWithTags(JSON.parse(request.payload));
+            Article.createWithTags(JSON.parse(request.payload));
+            return { msg: 'OK' };
         },
     },
 };
