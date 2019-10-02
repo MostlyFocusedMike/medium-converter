@@ -41,6 +41,19 @@ class Article extends ObjectionBoiler {
             dbArticle.addRelations('tags', dbTag);
         }
     }
+
+    /**
+     * get all articles with their related tags inside
+     */
+    static async getArticlesWithTags() {
+        const articles = await this.all();
+        for (let i = 0; i < articles.length; i++) {
+            const article = articles[i];
+            const relatedTags = await article.listRelations('tags');
+            article.tags = relatedTags;
+        }
+        return articles;
+    }
 }
 
 module.exports = Article;

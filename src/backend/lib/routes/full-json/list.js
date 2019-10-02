@@ -3,8 +3,8 @@ module.exports = {
     path: '/full-json',
     options: {
         handler: async (request, h) => {
-            const { Tag } = request.server.app.Database;
-            return Tag.all();
+            const { Article } = request.server.app.Database;
+            return Article.getArticlesWithTags();
         },
     },
 };

@@ -13,6 +13,10 @@ const MediumConverter: React.FC = () => {
 
     // useEffect(() => { console.log('rawText: ', rawText); }, [rawText]);
     // useEffect(() => { console.log('articles: ', articles); }, [articles]);
+    useEffect(() => {
+        ArticleAdapter.getAllWithTags()
+            .then(console.log);
+     }, []);
 
     const handleChange = (e: React.FormEvent<HTMLTextAreaElement>): void => {
         setRawText(e.currentTarget.value);
