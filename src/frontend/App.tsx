@@ -6,6 +6,7 @@ import { ArticleAdapter } from './adapters';
 import ArticlesHolder from './components/ArticlesHolder';
 import JsonArticlesCard from './components/JsonArticlesCard';
 import MediumJsonLink from './components/MediumLink';
+import MediumForm from './components/MediumForm';
 
 // export const MediumConverterContainer: React.FC<PropsItf> = (props) => {
     const App: React.FC = () => {
@@ -39,17 +40,11 @@ import MediumJsonLink from './components/MediumLink';
             <div id='app'>
                 <h1>Raw Medium Text Converter</h1>
                 <MediumJsonLink />
-                <form onSubmit={handleSubmit} >
-                    <label htmlFor='raw-medium-text-input'>Paste your Medium text into here:</label>
-                    <textarea
-                        id='raw-medium-text-input'
-                        value={rawText}
-                        onChange={handleChange}
-                    />
-                    <input
-                        type='submit' value='Convert'
-                    />
-                </form>
+                <MediumForm
+                    handleSubmit={handleSubmit}
+                    handleChange={handleChange}
+                    rawText={rawText}
+                />
                 {/* this will eventually be the real DB json, not the medium version */}
                 <JsonArticlesCard jsonArticles={fullJson} />
                 <ArticlesHolder articles={articles}/>
