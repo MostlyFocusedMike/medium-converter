@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import AppContext from '.';
 
 interface ContextProviderPropsIntf {
@@ -6,8 +6,12 @@ interface ContextProviderPropsIntf {
 }
 
 const ContextProvider: React.FC<ContextProviderPropsIntf>= ({ children }) => {
+    const [fullJson, setFullJson] = useState<any>([]); // figure out interface
+
     const context = {
-        test: 'hello there'
+        test: 'hello there',
+        fullJson,
+        setFullJson,
     }
 
     return (

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import './App.css';
 import Constants from '../constants'
 import RawMediumToJSON, { niceJSONArticlesIntf } from './utilities/raw-medium-to-json';
 import { ArticleAdapter } from './adapters';
+import AppContext from './context';
 import ArticlesHolder from './components/ArticlesHolder';
 import JsonArticlesCard from './components/JsonArticlesCard';
 import MediumJsonLink from './components/MediumLink';
@@ -12,7 +13,10 @@ import MediumForm from './components/MediumForm';
 const App: React.FC = () => {
     const [rawText, setRawText] = useState('');
     const [articles, setArticles] = useState<niceJSONArticlesIntf[]>([]);
-    const [fullJson, setFullJson] = useState<any>([]); // figure out interface
+    const {
+        fullJson,
+        setFullJson,
+    } = useContext(AppContext);
 
     useEffect(() => {
         ArticleAdapter.getAllWithTags().then(setFullJson);
