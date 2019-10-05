@@ -1,13 +1,13 @@
 import React from 'react'
 import { render, fireEvent, cleanup, getByText } from '@testing-library/react';
-import MediumConverter from '.';
-import { mediumTextDump } from '../../../mocks/utilities-test-mocks/mock-medium-text-dump';
-import Constants from '../../../constants';
+import App from './App';
+import { mediumTextDump } from '../mocks/utilities-test-mocks/mock-medium-text-dump';
+import Constants from '../constants';
 
 
-describe('MediumConverter tests', () => {
+describe('App tests', () => {
     const setup = () => {
-        const utils = render(<MediumConverter />);
+        const utils = render(<App />);
         const textarea = utils.getByLabelText('paste your Medium', { exact: false });
         const convertButton = utils.getByText('Convert');
         const mediumJSONlink = utils.getByText('Go here and click', { exact: false });

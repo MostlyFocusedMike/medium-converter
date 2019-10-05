@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles.css';
-import Constants from '../../../../../constants';
+import Constants from '../../../constants';
 
 const MediumJsonLink: React.FC = () => {
     return (
