@@ -1,6 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import MyProvider from './context/ContextProvider';
 
 import App from "./App";
 
-ReactDOM.render(<App />, document.getElementById("main"));
+ReactDOM.render(
+    <MyProvider>
+        <App />
+    </MyProvider>,
+    document.getElementById("main")
+);
