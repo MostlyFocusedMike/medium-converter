@@ -20,7 +20,6 @@ interface rawArticleIntf {
     };
     content: {
         subtitle: string;
-        metaDescription: string;
     };
 }
 
@@ -31,7 +30,6 @@ export interface niceJSONArticlesIntf {
     link: string;
     image: string;
     subtitle: string;
-    metaDescription: string;
     tags: {
         name: string;
         slug: string;
@@ -61,7 +59,7 @@ class RawMediumToJSON {
             slug,
             uniqueSlug,
             virtuals: { previewImage: { imageId }, tags },
-            content: { subtitle, metaDescription },
+            content: { subtitle },
             firstPublishedAt,
         } = rawArticle;
 
@@ -74,7 +72,6 @@ class RawMediumToJSON {
             link,
             image: this.checkForImage(imageId),
             subtitle,
-            metaDescription,
             first_published_at: new Date(firstPublishedAt).toISOString(),
             tags: this.formatTags(tags),
         };

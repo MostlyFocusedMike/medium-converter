@@ -156,7 +156,6 @@
       "link": "https://medium.com/@mikecronin92/javascript-interview-prep-primitive-vs-reference-types-62eef165bec8",
       "image": "https://miro.medium.com/max/1400/1*GaGsGlBnetFLAVt9OwzzvQ.png",
       "subtitle": "Understanding how JavaScript treats different data",
-      "metaDescription": "Understanding the different ways that JavaScript variables can store data.",
       "tags": [
         {
           "name": "JavaScript",
@@ -217,7 +216,6 @@
       "link": "https://medium.com/@mikecronin92/understanding-how-recursion-works-by-using-arrays-a072ba653717",
       "image": "https://miro.medium.com/max/1400/1*myJegT6UPUiopSgfHXUg-g.jpeg",
       "subtitle": "Learn how recursion works without using math functions",
-      "metaDescription": "A helpful guide for new programmers on one of computer sciences trickiest subjects: recursion.",
       "tags": [
         {
           "name": "JavaScript",
@@ -248,7 +246,6 @@
       "link": "https://medium.com/@mikecronin92/how-to-use-dataloader-js-9727c527efd0",
       "image": "https://miro.medium.com/max/1400/1*IMtFemgI6S3x_Rqx1koc-g.jpeg",
       "subtitle": "Make your GraphQL queries more efficient by batching them",
-      "metaDescription": "Learn the basic mechanics of DataLoaders so that you can use them in yourGraphQL Node API",
       "tags": [
         {
           "name": "JavaScript",

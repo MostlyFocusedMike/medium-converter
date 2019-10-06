@@ -28,7 +28,7 @@ class ArticlesConverter {
             uniqueSlug,
             firstPublishedAt,
             virtuals: { previewImage: { imageId }, tags },
-            content: { subtitle, metaDescription },
+            content: { subtitle },
         } = rawArticle;
 
         const link = `https://medium.com/@${this.userHandle}/${uniqueSlug}`;
@@ -41,7 +41,6 @@ class ArticlesConverter {
             link,
             image: this.checkForImage(imageId),
             subtitle,
-            metaDescription,
             tags: this.formatTags(tags),
         };
     };

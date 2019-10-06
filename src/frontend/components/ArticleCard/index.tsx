@@ -13,7 +13,6 @@ export const ArticleCard: React.FC<cardsHolderIntf> = ({article}) => {
         link,
         image,
         subtitle,
-        metaDescription,
         tags,
     } = article;
     return (
@@ -21,7 +20,6 @@ export const ArticleCard: React.FC<cardsHolderIntf> = ({article}) => {
             <img src={image} alt="image" />
             <h2>{title}</h2>
             <h3>{subtitle}</h3>
-            <p>{metaDescription}</p>
         </div>
     )
 }
