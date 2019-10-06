@@ -3,18 +3,14 @@ import AppContext from '../../context';
 import './styles.css';
 import ArticleCard from "../ArticleCard";
 
-interface cardsHolderIntf {
-    articles: any[],
-}
-
-const ArticlesHolder: React.FC<cardsHolderIntf> = ({ articles }) => {
-    const context = useContext(AppContext);
-    console.log(context);
+const ArticlesHolder: React.FC = () => {
+    const { articles } = useContext(AppContext);
+    console.log(articles)
     return (
         <div id="articles-holder">
             {
-                articles.length
-                    ? articles.map((article, idx) => {
+                articles
+                    ? articles.map((article: any, idx: number) => {
                         return (
                             <div
                                 key={`${article.medium_id}`}

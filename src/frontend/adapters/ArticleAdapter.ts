@@ -15,9 +15,8 @@ class ArticleAdapter {
     }
 
     static getAllWithTags() {
-        return fetch('/full-json', this.options).then(response => response.json());
+        return fetch(`${this.url}?tags=true`, this.options).then(response => response.json());
     }
-
 
     static createAll(niceJSONArticles: niceJSONArticlesIntf[]) {
         const postOptions = {

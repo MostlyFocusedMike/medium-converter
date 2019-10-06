@@ -6,12 +6,12 @@ interface ContextProviderPropsIntf {
 }
 
 const ContextProvider: React.FC<ContextProviderPropsIntf>= ({ children }) => {
-    const [fullJson, setFullJson] = useState<any>([]); // figure out interface
+    const [articles, setArticles] = useState<any>([]); // figure out interface
 
     const context = {
         test: 'hello there',
-        fullJson,
-        setFullJson,
+        articles,
+        setArticles,
     }
 
     return (
