@@ -1,11 +1,6 @@
-h1 {
-    font-family: sans-serif;
-    color: #111;
-}
-
-form {
-    margin-top: 1rem;
-    input, label, textarea {
-        display: block;
-    }
+#articles-holder {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
 }

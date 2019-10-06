@@ -11,8 +11,10 @@ module.exports = {
         },
         handler: async (request, h) => {
             const { Article } = request.server.app.Database;
-            if (request.query.tags) return Article.getArticlesWithTags();
-            return Article.all();
+            const articles = request.query.tags
+                ? await Article.getArticlesWithTags()
+                : await Article.all();
+            return articles.sort((a, b) => new Date(b.first_published_at) - new Date(a.first_published_at));
         },
     },
 };

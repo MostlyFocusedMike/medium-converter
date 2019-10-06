@@ -15,6 +15,7 @@ class ObjectionBoiler extends BaseModel {
                 content: { type: 'string' },
                 created_at: { type: 'date' },
                 updated_at: { type: 'date' },
+                first_published_at: { type: 'date' },
             },
         };
     }

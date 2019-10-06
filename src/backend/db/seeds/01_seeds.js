@@ -15,6 +15,7 @@ exports.seed = async (knex) => {
             link: 'https://medium.com/@mikecronin92/attention-new-devs-professionals-google-stuff-a-lot-16f1a7e639a0',
             image: 'https://miro.medium.com/max/1400/1*_vTEr9GqtFOUmhS3Cvjp2Q.jpeg',
             subtitle: 'And that’s a good thing',
+            first_published_at: '2019-08-19T11:37:28.949Z',
             tags: [
                 {
                     name: 'JavaScript',
@@ -42,6 +43,7 @@ exports.seed = async (knex) => {
             link: 'https://medium.com/@mikecronin92/how-to-build-a-dynamic-controlled-form-with-react-hooks-2019-b39840f75c4f',
             image: 'https://WRONGLINK',
             subtitle: 'React Hooks help simplify a tricky concept',
+            first_published_at: '2019-07-31T23:42:42.647Z',
             tags: [
                 {
                     name: 'JavaScript', // this should not get created again
@@ -61,6 +63,7 @@ exports.seed = async (knex) => {
             link: 'https://medium.com/@mikecronin92/how-to-build-a-dynamic-controlled-form-with-react-hooks-2019-b39840f75c4f',
             image: 'https://miro.medium.com/max/1400/1*cElSU8pY7J_Ky6pg9bEe_w.jpeg',
             subtitle: 'React Hooks help simplify a tricky concept',
+            first_published_at: '2019-07-31T23:42:42.647Z',
             tags: [
                 {
                     name: 'JavaScript', // this should not get created again

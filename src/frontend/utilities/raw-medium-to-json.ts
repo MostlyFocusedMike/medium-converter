@@ -11,6 +11,7 @@ interface rawArticleIntf {
     title: string;
     slug: string;
     uniqueSlug: string;
+    firstPublishedAt: number;
     virtuals: {
         previewImage: {
             imageId: string;
@@ -61,6 +62,7 @@ class RawMediumToJSON {
             uniqueSlug,
             virtuals: { previewImage: { imageId }, tags },
             content: { subtitle, metaDescription },
+            firstPublishedAt,
         } = rawArticle;
 
         const link = `https://medium.com/@${this.userHandle}/${uniqueSlug}`;
@@ -73,6 +75,7 @@ class RawMediumToJSON {
             image: this.checkForImage(imageId),
             subtitle,
             metaDescription,
+            first_published_at: new Date(firstPublishedAt).toISOString(),
             tags: this.formatTags(tags),
         };
     };

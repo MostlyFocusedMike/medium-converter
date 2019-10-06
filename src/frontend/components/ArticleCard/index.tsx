@@ -18,8 +18,10 @@ export const ArticleCard: React.FC<cardsHolderIntf> = ({article}) => {
     } = article;
     return (
         <div className="article-card">
-            <p>{title}</p>
-            <p>{subtitle}</p>
+            <img src={image} alt="image" />
+            <h2>{title}</h2>
+            <h3>{subtitle}</h3>
+            <p>{metaDescription}</p>
         </div>
     )
 }
