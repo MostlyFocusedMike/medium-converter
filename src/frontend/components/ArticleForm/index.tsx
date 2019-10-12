@@ -26,13 +26,47 @@ const ArticleForm: React.FC = () => {
         e.preventDefault();
     };
 
+    // article url is the medium id and slug, and link
     return (
         <form onSubmit={handleSubmit} >
             <h2>Individual Article Form</h2>
-            <label htmlFor='raw-medium-text-input'>Article URL</label>
+            <label htmlFor='article-url'>Article URL</label>
             <input
                 type='text'
+                id='article-url'
                 name='articleUrl'
+                onChange={handleChange}
+                value={formState.articleUrl}
+            />
+            <label htmlFor='article-title'>Article Title</label>
+            <input
+                type='text'
+                id='article-title'
+                name='articleTitle'
+                onChange={handleChange}
+                value={formState.articleUrl}
+            />
+            <label htmlFor='article-subtitle'>Article Subtitle</label>
+            <input
+                type='text'
+                id='article-subtitle'
+                name='articleSubtitle'
+                onChange={handleChange}
+                value={formState.articleUrl}
+            />
+            <label htmlFor='article-image'>Article Image Link</label>
+            <input
+                type='text'
+                id='article-image'
+                name='articleImage'
+                onChange={handleChange}
+                value={formState.articleUrl}
+            />
+            <label htmlFor='article-published'>Article First Published at</label>
+            <input
+                type='text'
+                id='article-published'
+                name='articlePublished'
                 onChange={handleChange}
                 value={formState.articleUrl}
             />

@@ -8,7 +8,7 @@ exports.up = (knex) => {
         table.string('link'); // url of the medium link
         table.string('image'); // url of the cover photo of the article
         table.string('subtitle'); // optional subtitle given to the article
-        table.timestamp('first_published_at'); // unix timestamp number for easier sorting
+        table.timestamp('first_published_at'); // ISO timestring for frontend sorting
         table.timestamp('created_at').defaultTo(knex.fn.now()); // ISO string for database records
         table.timestamp('updated_at').defaultTo(knex.fn.now()); // ISO string for database records
     });
