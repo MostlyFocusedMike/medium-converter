@@ -24,24 +24,26 @@ const ArticleForm: React.FC = () => {
         articleTags: '',
     });
 
-    const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
+    const handleChange = (e: React.FormEvent<HTMLInputElement> | React.FormEvent<HTMLTextAreaElement>): void => {
         setFormState({
             ...formState,
             [e.currentTarget.name]: e.currentTarget.value,
         });
     };
 
-    const handleChangeTextarea = (e: React.FormEvent<HTMLTextAreaElement>): void => {
-        setFormState({
-            ...formState,
-            [e.currentTarget.name]: e.currentTarget.value,
-        });
-    };
+    const formatArticleUrl = () => {
+        const uniqueSlug = formState.articleUrl.split('/').slice(-1)[0];
+        console.log(uniqueSlug);
+        const mediumId = formState.articleUrl.split('-').slice(-1)[0];
+        console.log(mediumId);
+        return {
+            mediumId,
+        }
+    }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        const tags = formState.articleTags
-        console.log(tags.split('\n'));
+        formatArticleUrl();
     };
 
     // article url is the medium id and slug, and link
@@ -93,7 +95,7 @@ const ArticleForm: React.FC = () => {
                 id='article-tags'
                 name='articleTags'
                 value={formState.articleTags}
-                onChange={handleChangeTextarea}
+                onChange={handleChange}
             />
             <input
                 type='submit' value='Save Article'
