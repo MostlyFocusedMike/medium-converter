@@ -5,6 +5,7 @@ import AppContext from './context';
 import MediumJsonLink from './components/MediumLink';
 import MediumForm from './components/MediumForm';
 import ArticlesHolder from './components/ArticlesHolder';
+import ArticleForm from './components/ArticleForm';
 
 // export const MediumConverterContainer: React.FC<PropsItf> = (props) => {
 const App: React.FC = () => {
@@ -21,6 +22,7 @@ const App: React.FC = () => {
             <h1>Raw Medium Text Converter</h1>
             <MediumJsonLink />
             <MediumForm />
+            <ArticleForm />
             <ArticlesHolder />
         </div>
     )

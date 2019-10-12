@@ -28,7 +28,7 @@ module.exports = {
             {
                 test: /\.ts(x?)$/,
                 exclude: /node_modules/,
-                use: ['ts-loader', 'astroturf/loader'],
+                use: ['ts-loader'],
             },
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             {
