@@ -7,11 +7,21 @@ import './styles.css';
 
 interface formStateIntf {
     articleUrl: string;
+    articleTitle: string;
+    articleSubtitle: string;
+    articleImage: string;
+    articlePublished: string;
+    articleTags: string;
 }
 
 const ArticleForm: React.FC = () => {
     const [formState, setFormState] = useState<formStateIntf>({
         articleUrl: '',
+        articleTitle: '',
+        articleSubtitle: '',
+        articleImage: '',
+        articlePublished: '',
+        articleTags: '',
     });
 
     const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
@@ -21,9 +31,17 @@ const ArticleForm: React.FC = () => {
         });
     };
 
+    const handleChangeTextarea = (e: React.FormEvent<HTMLTextAreaElement>): void => {
+        setFormState({
+            ...formState,
+            [e.currentTarget.name]: e.currentTarget.value,
+        });
+    };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
+        const tags = formState.articleTags
+        console.log(tags.split('\n'));
     };
 
     // article url is the medium id and slug, and link
@@ -44,7 +62,7 @@ const ArticleForm: React.FC = () => {
                 id='article-title'
                 name='articleTitle'
                 onChange={handleChange}
-                value={formState.articleUrl}
+                value={formState.articleTitle}
             />
             <label htmlFor='article-subtitle'>Article Subtitle</label>
             <input
@@ -52,7 +70,7 @@ const ArticleForm: React.FC = () => {
                 id='article-subtitle'
                 name='articleSubtitle'
                 onChange={handleChange}
-                value={formState.articleUrl}
+                value={formState.articleSubtitle}
             />
             <label htmlFor='article-image'>Article Image Link</label>
             <input
@@ -60,7 +78,7 @@ const ArticleForm: React.FC = () => {
                 id='article-image'
                 name='articleImage'
                 onChange={handleChange}
-                value={formState.articleUrl}
+                value={formState.articleImage}
             />
             <label htmlFor='article-published'>Article First Published at</label>
             <input
@@ -68,7 +86,14 @@ const ArticleForm: React.FC = () => {
                 id='article-published'
                 name='articlePublished'
                 onChange={handleChange}
-                value={formState.articleUrl}
+                value={formState.articlePublished}
+            />
+            <label htmlFor='article-tags'>Paste your tags, each separated with a newline:</label>
+            <textarea
+                id='article-tags'
+                name='articleTags'
+                value={formState.articleTags}
+                onChange={handleChangeTextarea}
             />
             <input
                 type='submit' value='Save Article'
