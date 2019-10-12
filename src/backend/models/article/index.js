@@ -13,14 +13,13 @@ class Article extends ObjectionBoiler {
             const {
                 medium_id, // eslint-disable-line camelcase
                 title,
-                slug,
                 link,
                 image,
                 subtitle,
                 first_published_at, // eslint-disable-line camelcase
                 tags,
             } = articles[i];
-            const newArticle = await this.createOrUpdate({ medium_id }, { title, slug, link, image, subtitle, first_published_at });
+            const newArticle = await this.createOrUpdate({ medium_id }, { title, link, image, subtitle, first_published_at });
             const filteredTags = Tag.filterTags(tags);
             for (let j = 0; j < filteredTags.length; j++) {
                 await this.addTag(filteredTags[j], newArticle);

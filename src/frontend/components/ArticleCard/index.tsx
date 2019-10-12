@@ -9,7 +9,6 @@ export const ArticleCard: React.FC<cardsHolderIntf> = ({article}) => {
     const {
         medium_id,
         title,
-        slug,
         link,
         image,
         subtitle,

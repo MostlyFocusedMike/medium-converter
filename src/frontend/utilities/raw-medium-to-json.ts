@@ -9,7 +9,6 @@ interface rawTagIntf {
 interface rawArticleIntf {
     id: string;
     title: string;
-    slug: string;
     uniqueSlug: string;
     firstPublishedAt: number;
     virtuals: {
@@ -26,7 +25,6 @@ interface rawArticleIntf {
 export interface niceJSONArticlesIntf {
     medium_id: string;
     title: string;
-    slug: string;
     link: string;
     image: string;
     subtitle: string;
@@ -56,7 +54,6 @@ class RawMediumToJSON {
         const {
             id: medium_id,
             title,
-            slug,
             uniqueSlug,
             virtuals: { previewImage: { imageId }, tags },
             content: { subtitle },
@@ -68,7 +65,6 @@ class RawMediumToJSON {
         return {
             medium_id,
             title,
-            slug,
             link,
             image: this.checkForImage(imageId),
             subtitle,
