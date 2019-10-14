@@ -6,7 +6,7 @@ import './styles.css';
 
 
 interface formStateIntf {
-    articleUrl: string;
+    articleLink: string;
     articleTitleSubtitle: string;
     articleImage: string;
     articlePublished: string;
@@ -15,7 +15,7 @@ interface formStateIntf {
 
 const ArticleForm: React.FC = () => {
     const [formState, setFormState] = useState<formStateIntf>({
-        articleUrl: '',
+        articleLink: '',
         articleTitleSubtitle: '',
         articleImage: '',
         articlePublished: '',
@@ -29,17 +29,6 @@ const ArticleForm: React.FC = () => {
         });
     };
 
-    const formatArticleUrl = () => {
-        const uniqueSlug = formState.articleUrl.split('/').slice(-1)[0];
-        console.log(uniqueSlug);
-        const mediumId = formState.articleUrl.split('-').slice(-1)[0];
-        console.log(mediumId);
-        return {
-            url: formState.articleUrl,
-            mediumId,
-        }
-    }
-
     const pullOutTitleAndSubtitle = () => {
         const [title, subtitle] = formState.articleTitleSubtitle.split('\n');
         return {
@@ -48,17 +37,26 @@ const ArticleForm: React.FC = () => {
         }
     }
 
-    // just get the link and the title and subtite split on newline and tags split on newline
-    // fuck it separate all by newline
+    const pullOutTags = () => {
+        const rawTags = formState.articleTags.split('\n');
+        const tags = rawTags.map(tag => ({
+            name: tag,
+            slug: tag.toLowerCase().replace(' ', '-').replace("'",''),
+        }));
+        return { tags };
+    }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-        const { articleImage, articlePublished } = formState;
         e.preventDefault();
+
+        const { articleImage, articlePublished } = formState;
         const formattedArticle = {
-            ...formatArticleUrl(),
-            ...pullOutTitleAndSubtitle(),
+            medium_id: formState.articleLink.split('-').slice(-1)[0],
+            link: formState.articleLink,
             image: articleImage,
             first_published_at: new Date(articlePublished).toISOString(),
+            ...pullOutTitleAndSubtitle(),
+            ...pullOutTags(),
         }
         console.log(formattedArticle);
     };
@@ -71,9 +69,9 @@ const ArticleForm: React.FC = () => {
             <input
                 type='text'
                 id='article-url'
-                name='articleUrl'
+                name='articleLink'
                 onChange={handleChange}
-                value={formState.articleUrl}
+                value={formState.articleLink}
             />
             <label htmlFor='article-title-subtitle'>Article Title and Subtitle</label>
             <p>The title and subtitle should be separated by a newline</p>
