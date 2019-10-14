@@ -7,8 +7,7 @@ import './styles.css';
 
 interface formStateIntf {
     articleUrl: string;
-    articleTitle: string;
-    articleSubtitle: string;
+    articleTitleSubtitle: string;
     articleImage: string;
     articlePublished: string;
     articleTags: string;
@@ -17,8 +16,7 @@ interface formStateIntf {
 const ArticleForm: React.FC = () => {
     const [formState, setFormState] = useState<formStateIntf>({
         articleUrl: '',
-        articleTitle: '',
-        articleSubtitle: '',
+        articleTitleSubtitle: '',
         articleImage: '',
         articlePublished: '',
         articleTags: '',
@@ -41,9 +39,24 @@ const ArticleForm: React.FC = () => {
         }
     }
 
+    const pullOutTitleAndSubtitle = () => {
+        const [title, subtitle] = formState.articleTitleSubtitle.split('\n');
+        console.log(formState.articleTitleSubtitle);
+        console.log('title: ', title);
+        console.log('subtitle: ', subtitle);
+        return {
+            title,
+            subtitle,
+        }
+    }
+
+    // just get the link and the title and subtite split on newline and tags split on newline
+    // fuck it separate all by newline
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         formatArticleUrl();
+        pullOutTitleAndSubtitle();
     };
 
     // article url is the medium id and slug, and link
@@ -58,21 +71,13 @@ const ArticleForm: React.FC = () => {
                 onChange={handleChange}
                 value={formState.articleUrl}
             />
-            <label htmlFor='article-title'>Article Title</label>
-            <input
-                type='text'
-                id='article-title'
-                name='articleTitle'
+            <label htmlFor='article-title-subtitle'>Article Title and Subtitle</label>
+            <p>The title and subtitle should be separated by a newline</p>
+            <textarea
+                id='article-title-subtitle'
+                name='articleTitleSubtitle'
                 onChange={handleChange}
-                value={formState.articleTitle}
-            />
-            <label htmlFor='article-subtitle'>Article Subtitle</label>
-            <input
-                type='text'
-                id='article-subtitle'
-                name='articleSubtitle'
-                onChange={handleChange}
-                value={formState.articleSubtitle}
+                value={formState.articleTitleSubtitle}
             />
             <label htmlFor='article-image'>Article Image Link</label>
             <input
