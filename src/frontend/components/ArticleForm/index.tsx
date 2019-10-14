@@ -35,15 +35,13 @@ const ArticleForm: React.FC = () => {
         const mediumId = formState.articleUrl.split('-').slice(-1)[0];
         console.log(mediumId);
         return {
+            url: formState.articleUrl,
             mediumId,
         }
     }
 
     const pullOutTitleAndSubtitle = () => {
         const [title, subtitle] = formState.articleTitleSubtitle.split('\n');
-        console.log(formState.articleTitleSubtitle);
-        console.log('title: ', title);
-        console.log('subtitle: ', subtitle);
         return {
             title,
             subtitle,
@@ -54,9 +52,15 @@ const ArticleForm: React.FC = () => {
     // fuck it separate all by newline
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+        const { articleImage, articlePublished } = formState;
         e.preventDefault();
-        formatArticleUrl();
-        pullOutTitleAndSubtitle();
+        const formattedArticle = {
+            ...formatArticleUrl(),
+            ...pullOutTitleAndSubtitle(),
+            image: articleImage,
+            first_published_at: new Date(articlePublished).toISOString(),
+        }
+        console.log(formattedArticle);
     };
 
     // article url is the medium id and slug, and link
@@ -79,14 +83,6 @@ const ArticleForm: React.FC = () => {
                 onChange={handleChange}
                 value={formState.articleTitleSubtitle}
             />
-            <label htmlFor='article-image'>Article Image Link</label>
-            <input
-                type='text'
-                id='article-image'
-                name='articleImage'
-                onChange={handleChange}
-                value={formState.articleImage}
-            />
             <label htmlFor='article-published'>Article First Published at</label>
             <input
                 type='text'
@@ -95,6 +91,15 @@ const ArticleForm: React.FC = () => {
                 onChange={handleChange}
                 value={formState.articlePublished}
             />
+            <label htmlFor='article-image'>Article Image Link</label>
+            <input
+                type='text'
+                id='article-image'
+                name='articleImage'
+                onChange={handleChange}
+                value={formState.articleImage}
+            />
+
             <label htmlFor='article-tags'>Paste your tags, each separated with a newline:</label>
             <textarea
                 id='article-tags'
