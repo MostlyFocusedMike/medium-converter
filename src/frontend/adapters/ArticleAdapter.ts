@@ -26,6 +26,15 @@ class ArticleAdapter {
         };
         return fetch('/create-from-medium', postOptions).then(response => response.json());
     }
+
+    static createOne(niceJSONArticle: niceJSONArticlesIntf) {
+        const postOptions = {
+            ...this.options,
+            method: 'POST',
+            body: JSON.stringify(niceJSONArticle)
+        };
+        return fetch(this.url, postOptions).then(response => response.json());
+    }
 }
 
 export default ArticleAdapter;
