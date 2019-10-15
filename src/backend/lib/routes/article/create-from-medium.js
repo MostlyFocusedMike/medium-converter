@@ -22,7 +22,7 @@ module.exports = {
         },
         handler: async (request, h) => {
             const { Article } = request.server.app.Database;
-            await Article.createWithTags(request.payload);
+            await Article.createManyWithTags(request.payload);
             return h.redirect('/articles?tags=true');
         },
     },

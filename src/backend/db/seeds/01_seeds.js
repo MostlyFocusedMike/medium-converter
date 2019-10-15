@@ -7,7 +7,7 @@ exports.seed = async (knex) => {
     // 'software-engineering',
     // 'software-development',
     // multiple create (all objects, even relationships must be new)
-    await Article.createWithTags([
+    await Article.createManyWithTags([
         {
             medium_id: '16f1a7e639a0',
             title: 'Attention New Devs: Professionals Google Stuff. A Lot.',

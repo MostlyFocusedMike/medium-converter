@@ -22,7 +22,8 @@ module.exports = {
         },
         handler: async (request, h) => {
             const { Article } = request.server.app.Database;
-            const article = Article.createOrUpdate(request.payload);
+            console.log('request.payload: ', request.payload);
+            const article = await Article.createOrUpdateWithTags(request.payload);
             console.log('article: ', article);
             return article;
         },

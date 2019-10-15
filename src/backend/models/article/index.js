@@ -4,11 +4,36 @@ const Tag = require('../tag');
 
 class Article extends ObjectionBoiler {
     /**
+     * take a single article with nested tags to add to db, some items may be new, or
+     * need to be updated, some tags have been created so shouldn't add relationships
+     * @param {articles} articles - the formatted json of articles and nested tags
+     */
+    static async createOrUpdateWithTags(article) {
+        const {
+            medium_id, // eslint-disable-line camelcase
+            title,
+            link,
+            image,
+            subtitle,
+            first_published_at, // eslint-disable-line camelcase
+            tags,
+        } = article;
+
+        const newArticle = await this.createOrUpdate({ medium_id }, { title, link, image, subtitle, first_published_at });
+        const filteredTags = Tag.filterTags(tags);
+        await Promise.all(filteredTags.map(tag => this.addTag(tag, newArticle)));
+        return {
+            ...newArticle,
+            tags: await newArticle.listRelations('tags'),
+        };
+    }
+
+    /**
      * take articles with nested tags to add to db, some items may be new, or
      * need to be updated, some tags have been created so shouldn't add relationships
      * @param {articles} articles - the formatted json of articles and nested tags
      */
-    static async createWithTags(articles) {
+    static async createManyWithTags(articles) {
         for (let i = 0; i < articles.length; i++) {
             const {
                 medium_id, // eslint-disable-line camelcase

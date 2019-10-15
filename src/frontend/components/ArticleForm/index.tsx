@@ -58,7 +58,7 @@ const ArticleForm: React.FC = () => {
             ...pullOutTitleAndSubtitle(),
             ...pullOutTags(),
         }
-        console.log(formattedArticle);
+        ArticleAdapter.createOne(formattedArticle).then(console.log);
     };
 
     // article url is the medium id and slug, and link
