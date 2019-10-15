@@ -5,12 +5,13 @@ import ArticleCard from "../ArticleCard";
 
 const ArticlesHolder: React.FC = () => {
     const { articles } = useContext(AppContext);
-    console.log(articles)
+    const sortedArticles = articles.sort((a: any, b: any) => new Date(b.first_published_at).getTime() - new Date(a.first_published_at).getTime());
+    console.log(sortedArticles)
     return (
         <div id="articles-holder">
             {
-                articles
-                    ? articles.map((article: any, idx: number) => {
+                sortedArticles
+                    ? sortedArticles.map((article: any) => {
                         return (
                             <div
                                 key={`${article.medium_id}`}
