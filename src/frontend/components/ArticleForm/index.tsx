@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Constants from '../../../constants'
 import { ArticleAdapter } from '../../adapters';
 import AppContext from '../../context';
@@ -21,7 +21,7 @@ const ArticleForm: React.FC = () => {
         articlePublished: '',
         articleTags: '',
     });
-
+    const { articles, setArticles } = useContext(AppContext);
     const handleChange = (e: React.FormEvent<HTMLInputElement> | React.FormEvent<HTMLTextAreaElement>): void => {
         setFormState({
             ...formState,
@@ -58,7 +58,8 @@ const ArticleForm: React.FC = () => {
             ...pullOutTitleAndSubtitle(),
             ...pullOutTags(),
         }
-        ArticleAdapter.createOne(formattedArticle).then(console.log);
+        ArticleAdapter.createOne(formattedArticle)
+            .then((newArticle) => setArticles([...articles, newArticle]));
     };
 
     // article url is the medium id and slug, and link
