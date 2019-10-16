@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
-import Constants from '../../../constants'
+import React, { useState, useContext } from 'react';
 import { ArticleAdapter } from '../../adapters';
 import AppContext from '../../context';
 import './styles.css';
@@ -14,27 +13,20 @@ interface formStateIntf {
 }
 
 const ArticleForm: React.FC = () => {
-    const [formState, setFormState] = useState<formStateIntf>({
+    const defaultState = {
         articleLink: '',
         articleTitleSubtitle: '',
         articleImage: '',
         articlePublished: '',
         articleTags: '',
-    });
+    }
+
+    const [formState, setFormState] = useState<formStateIntf>(defaultState);
     const { articles, setArticles } = useContext(AppContext);
-    const handleChange = (e: React.FormEvent<HTMLInputElement> | React.FormEvent<HTMLTextAreaElement>): void => {
-        setFormState({
-            ...formState,
-            [e.currentTarget.name]: e.currentTarget.value,
-        });
-    };
 
     const pullOutTitleAndSubtitle = () => {
         const [title, subtitle] = formState.articleTitleSubtitle.split('\n');
-        return {
-            title,
-            subtitle,
-        }
+        return { title, subtitle };
     }
 
     const pullOutTags = () => {
@@ -46,11 +38,9 @@ const ArticleForm: React.FC = () => {
         return { tags };
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-        e.preventDefault();
-
+    const formatArticle = () => {
         const { articleImage, articlePublished } = formState;
-        const formattedArticle = {
+        return {
             medium_id: formState.articleLink.split('-').slice(-1)[0],
             link: formState.articleLink,
             image: articleImage,
@@ -58,11 +48,22 @@ const ArticleForm: React.FC = () => {
             ...pullOutTitleAndSubtitle(),
             ...pullOutTags(),
         }
-        ArticleAdapter.createOne(formattedArticle)
-            .then((newArticle) => setArticles([...articles, newArticle]));
+    }
+
+    const handleChange = (e: React.FormEvent<HTMLInputElement> | React.FormEvent<HTMLTextAreaElement>): void => {
+        setFormState({
+            ...formState,
+            [e.currentTarget.name]: e.currentTarget.value,
+        });
     };
 
-    // article url is the medium id and slug, and link
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+        e.preventDefault();
+        ArticleAdapter.createOne(formatArticle())
+            .then((newArticle) => setArticles([...articles, newArticle]))
+            .then(() => setFormState(defaultState));
+    };
+
     return (
         <form onSubmit={handleSubmit} >
             <h2>Individual Article Form</h2>
@@ -98,7 +99,6 @@ const ArticleForm: React.FC = () => {
                 onChange={handleChange}
                 value={formState.articleImage}
             />
-
             <label htmlFor='article-tags'>Paste your tags, each separated with a newline:</label>
             <textarea
                 id='article-tags'
