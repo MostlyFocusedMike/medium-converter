@@ -23,6 +23,9 @@ const App: React.FC = () => {
             <MediumJsonLink />
             <MediumForm />
             <ArticleForm />
+            <a href='/articles?tags=true' target="_self">
+                <h2>Get JSON of all articles</h2>
+            </a>
             <ArticlesHolder />
         </div>
     )
