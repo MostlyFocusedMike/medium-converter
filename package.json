@@ -36,7 +36,7 @@
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
     "joi": "^14.3.1",
-    "knex": "^0.19.3",
+    "knex": "^0.19.5",
     "node-fetch": "^2.6.0",
     "objection": "^1.6.9",
     "objection-db-errors": "^1.1.1",
