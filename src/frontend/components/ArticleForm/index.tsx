@@ -57,6 +57,7 @@ const ArticleForm: React.FC = () => {
         });
     };
 
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         ArticleAdapter.createOne(formatArticle())
